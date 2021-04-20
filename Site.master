@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,8 @@
 <body>
     <form id="form1" runat="server">
     <div id="headerContent">
-        Header
+        <a href="Default.aspx">Home</a>
+        <a href="ControlPanel.aspx">Control Panel</a>
         <asp:LoginStatus ID="LoginStatus1" runat="server" OnLoggedOut="LoginStatus1_LoggedOut" OnLoggingOut="LoginStatus1_LoggingOut" />
     </div>
     <div>
@@ -23,8 +24,5 @@
         <p>
             &nbsp;</p>
     </form>
-    <div id="footerContent">
-        Footer
-    </div>
 </body>
 </html>
