@@ -14,7 +14,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)
     {
-        
+        HttpCookie currentUserCookie = HttpContext.Current.Request.Cookies["auth"];
+        HttpContext.Current.Response.Cookies.Remove("auth");
+        e.Cancel = true;
+        Response.Redirect("login.aspx");
     }
 
     protected void LoginStatus1_LoggedOut(object sender, EventArgs e)
