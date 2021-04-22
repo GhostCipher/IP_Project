@@ -4,9 +4,9 @@
 AS
 	BEGIN
 		SET nocount ON
-		DECLARE @UserId INT
+		DECLARE @UserId text
 
-		SELECT @UserId = Id
+		SELECT @UserId = Name
 		FROM Users 
 		 WHERE Email = @Username 
 		 AND Password = @Password
@@ -17,6 +17,6 @@ AS
 			END
 		Else
 			BEGIN
-				SELECT 0 -- User invalid.
+				SELECT null -- User invalid.
 			END
 	END

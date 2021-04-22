@@ -11,22 +11,27 @@ using System.Web.Security;
 
 public partial class ControlPanel : System.Web.UI.Page
 {
-    string ReadCookie(string cookieName, string key)
+    string getUser()
     {
-        HttpCookie cookie = HttpContext.Current.Request.Cookies[cookieName];
-        if (cookie != null)
+        FormsAuthenticationTicket ticket;
+        if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
         {
-            return cookie[key];
+            ticket = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value);
+            return ticket.Name;
         }
-        return null;
+        else return null;
+        
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        string user = ReadCookie("auth", "user");
+        string user = getUser();
         if (user == null)
         {
-            Response.Redirect("login.aspx");
+            FormsAuthentication.RedirectToLoginPage();
         }
+        
+        
 
     }
 

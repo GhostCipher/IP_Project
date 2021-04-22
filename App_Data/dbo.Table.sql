@@ -1,10 +1,8 @@
-﻿CREATE TABLE [dbo].[Table] (
-    [Id]        INT  NOT NULL,
-    [Name]      TEXT NOT NULL,
-    [Admin]     INT  DEFAULT ((0)) NOT NULL,
-    [Moderator] INT  DEFAULT ((0)) NOT NULL,
+﻿CREATE TABLE [dbo].[Users]
+(
+    [Name] NVARCHAR(50) NOT NULL, 
+    [Password] NVARCHAR(50) NOT NULL, 
     [Email] NVARCHAR(50) NOT NULL, 
-    [Password] NCHAR(10) NOT NULL, 
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
+    [Role] NVARCHAR(50) NULL, 
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Email])
+)
