@@ -13,6 +13,7 @@ public partial class ControlPanel : System.Web.UI.Page
 {
     string getUser()
     {
+        // Check for Authentication Cookie
         FormsAuthenticationTicket ticket;
         if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
         {
@@ -25,7 +26,11 @@ public partial class ControlPanel : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        // Check for Authentication Cookie
         string user = getUser();
+
+        // Redirect to login if not logged in
         if (user == null)
         {
             FormsAuthentication.RedirectToLoginPage();

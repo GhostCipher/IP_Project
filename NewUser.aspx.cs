@@ -27,11 +27,15 @@ public partial class Default2 : System.Web.UI.Page
     {
         if (IsValidEmail(EmailTxtBox.Text))
         {
+            // Get User Information
             string name = NameTxtBox.Text;
             string email = EmailTxtBox.Text;
             string pass = PasswordTxtBox.Text;
+
+            // Get connection String
             string constr = ConfigurationManager.ConnectionStrings["UserConnectionString"].ConnectionString;
 
+            // Set up SQL Query
             SqlConnection con = new SqlConnection(constr);
             SqlCommand cmd = new SqlCommand("AddUser");
             cmd.CommandType = CommandType.StoredProcedure;
@@ -39,13 +43,15 @@ public partial class Default2 : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Password", pass);
             cmd.Connection = con;
+
+            // Execute Query
             con.Open();
             cmd.ExecuteScalar();
             con.Close();
         }
         else
         {
-            // Error Message
+            // Add Error Message
         }
     }
 }
