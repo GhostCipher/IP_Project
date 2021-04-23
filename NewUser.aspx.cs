@@ -42,6 +42,7 @@ public partial class Default2 : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Name", name);
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Password", pass);
+            cmd.Parameters.AddWithValue("@Role", "Member");
             cmd.Connection = con;
 
             // Execute Query
